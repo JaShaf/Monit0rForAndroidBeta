@@ -1,1 +1,1 @@
-"# Monit0rForAndroidBeta" 
+Current build supports data persistence for users. 3 screens are included: Home screen, Settings Screen, Main Org details screen and the team members screen. Team members can be added or deleted and their status can be tracked (aka active or inactive), heirarchy status can also be tracked. (I recommend just putting generic unless they have a special role.)
