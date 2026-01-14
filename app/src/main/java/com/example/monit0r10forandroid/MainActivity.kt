@@ -31,13 +31,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-
+import kotlinx.serialization.Serializable
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val userPrefs = UserPreferences(applicationContext)
+
         setContent {
-            AppNavigation()
+            AppNavigation(userPrefs)
 
         }
 
@@ -48,7 +51,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(userPrefs: UserPreferences) {
     val navController = rememberNavController()
 
     NavHost(
@@ -58,14 +61,14 @@ fun AppNavigation() {
         composable(Screens.Title.route) {
             TitleScreens(navController)
         }
-        composable(Screens.Settings.route) {
-            SettingsScreens(navController)
-        }
+//        composable(Screens.Settings.route) {
+//            SettingsScreens(navController)
+//        }
         composable(Screens.EmployerOrgDetails.route) {
-            EmployerOrgDetailsScreens(navController)
+            EmployerOrgDetailsScreens(navController, userPrefs)
         }
         composable(Screens.EmployeesPlayers.route) {
-            EmployeesPlayersScreens(navController)
+            EmployeesPlayersScreens(navController, userPrefs)
         }
     }
 }
